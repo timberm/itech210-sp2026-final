@@ -1,1 +1,3 @@
-#itech210-sp2026-final
+#itech210-sp2026-
+
+The goal of this game is to travel up towards and reach the Jiibayaabooz using a waabooz for the sprite. The Jiibayaabooz is known as the connector between the humans and the spirits and is also known as a trickster rabbit. This would be a vertical platformer game, and I think having a rabbit is the perfect “player” for that. I’m planning to have the game speed up, and if you cannot land a jump on a platform in time, you will fall and lose. If I can get that implemented in time successfully, I might try and add an obstacle other than just falling. Since you are traveling towards the sky, you must collect stars to obtain points. I’m also thinking that there could be some sort of moon rock for extra points. 
