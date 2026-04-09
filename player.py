@@ -3,6 +3,11 @@ from settings import *
 from collision import *
 from grid import *
 
+waabooz = pygame.image.load("media/bunny-sprite.png").convert_alpha()
+waabooz_jump = pygame.image.load("media/bunny-jump.png").convert_alpha()
+player_sprite = pygame.transform.scale(waabooz, (32,32))
+player_jump_sprite = pygame.transform.scale(waabooz_jump, (32,32))
+
 
 def get_player_input():
     player_input = {
@@ -12,7 +17,7 @@ def get_player_input():
     }
     pressed = pygame.key.get_pressed()
     if pressed[pygame.K_a]:
-            player_input['LEFT'] = True
+        player_input['LEFT'] = True
     if pressed[pygame.K_d]:
         player_input['RIGHT'] = True
     if pressed[pygame.K_SPACE]:
@@ -22,7 +27,12 @@ def get_player_input():
  
 def draw_player(surface, camera):
     pos = (player['pos'][0]-camera['pos'][0], player['pos'][1]-camera['pos'][1])
-    pygame.draw.rect(surface, GREEN, (pos, player['size']))
+    # pygame.draw.rect(surface, GREEN, (pos, player['size']))
+    screen.blit(player_sprite, (pos, player['size']))
+
+    # jump sprite change
+    # screen.blit(player_jump_sprite, (player['pos'], player['size']))
+
 
 def update_player(dt): 
     input = get_player_input()
@@ -41,10 +51,10 @@ def update_player(dt):
     if input.get('RIGHT'):
         player['force'][0] += player['speed'] * dt
     if input.get('JUMP') and on_ground:
-        player['force'][1] -= player['speed'] * 5 * dt
+        player['force'][1] -= player['speed'] * 7 * dt #height of jump action
     
    
-    player['force'][1] = min(player['force'][1], GRAVITY*5)
+    player['force'][1] = min(player['force'][1], GRAVITY*7) #gravity 
 
     move_player(player)
     
@@ -91,7 +101,7 @@ player = {
     'pos': [100,100],
     'size': [32,32],
     'rect': pygame.Rect([100,100],[32,32]),
-    'speed': 1,
+    'speed': 0.8,
     'force':  [0,0], 
     'update': update_player,
     'draw': draw_player,
