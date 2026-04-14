@@ -30,9 +30,6 @@ def draw_player(surface, camera):
     # pygame.draw.rect(surface, GREEN, (pos, player['size']))
     screen.blit(player_sprite, (pos, player['size']))
 
-    # jump sprite change
-    # screen.blit(player_jump_sprite, (player['pos'], player['size']))
-
 
 def update_player(dt): 
     input = get_player_input()
@@ -51,7 +48,7 @@ def update_player(dt):
     if input.get('RIGHT'):
         player['force'][0] += player['speed'] * dt
     if input.get('JUMP') and on_ground:
-        player['force'][1] -= player['speed'] * 7 * dt #height of jump action
+        player['force'][1] -= player['speed'] * 10 * (dt/3) #height of jump action
     
    
     player['force'][1] = min(player['force'][1], GRAVITY*7) #gravity 

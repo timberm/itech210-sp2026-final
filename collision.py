@@ -2,6 +2,8 @@ import pygame
 from settings import * 
 from grid import *
 
+cloud = pygame.image.load("media/cloud.png").convert_alpha()
+
 def get_collisions(rect, radius=1):
     colliders = []
     collider_grid = grid
@@ -40,6 +42,7 @@ def draw_colliders(surface, camera, grid):
         y = int(pos[1])*CELL_SIZE - camera['pos'][1]
         if val is not None:
             col_surface = pygame.Surface((CELL_SIZE, CELL_SIZE), pygame.SRCALPHA)
-            pygame.draw.rect(col_surface, BLUE_A, col_surface.get_rect())
+            # pygame.draw.rect(col_surface, BLUE_A, col_surface.get_rect())
+            screen.blit(cloud, (x,y))
             surface.blit(col_surface, (x,y))
  

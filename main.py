@@ -7,7 +7,8 @@ from grid import *
 from collision import *
 
 
-bg = pygame.image.load("media/bg.png")
+bg = pygame.image.load("media/bg1.png")
+
 
 pygame.init()
 
@@ -15,8 +16,6 @@ def init():
     #initialize all of the game here
     pygame.display.set_caption("Jiibayaabooz")
     config = {}
-    
-    screen.blit(bg, (0,0))
 
     #collider grid
     collider_grid = grid
@@ -29,15 +28,24 @@ def init():
     # add_collider_to_grid((0,18), (34,3), collider_grid)
     # add_collider_to_grid((36,18), (3,3), collider_grid)
     # add_collider_to_grid((0,18), (75,5), collider_grid)
-    # add_collider_to_grid((12,14), (5,1), collider_grid) # (x,y)
+    # add_collider_to_grid((12,14), (5,1), collider_grid) 
     # add_collider_to_grid((6,11), (5,1), collider_grid)
     # add_collider_to_grid((21,12), (5,1), collider_grid)
     # add_collider_to_grid((15,8), (5,1), collider_grid)
-    # add_collider_to_grid((23,5), (5,1), collider_grid) # (start), size x,y (from left to right), collider grid
+    # add_collider_to_grid((23,5), (5,1), collider_grid) 
     # add_collider_to_grid((17,4), (5,1), collider_grid)
     # add_collider_to_grid((27,20),(5,1),collider_grid)
     # add_collider_to_grid((35,10),(5,1),collider_grid)
     # add_collider_to_grid((30,15),(5,1),collider_grid)
+
+    # ground base
+    add_collider_to_grid((0,249), (73,3), collider_grid)
+
+    # left side 
+    add_collider_to_grid((-1,0),(1,250), collider_grid)
+    
+    # right side
+    add_collider_to_grid((73,0), (1,250), collider_grid)
 
     # create random colliders
     for i in range(250):
@@ -46,7 +54,6 @@ def init():
         y = random.randint(1,250)
         size = random.randint(2,7)
         add_collider_to_grid((x,y),(size,1),collider_grid)
-
 
     #camera
     config['camera'] = camera
@@ -58,7 +65,6 @@ def init():
     #player
     config['player'] = player
     objects.append(player)
-
     
     game_loop(screen, clock, config)
 
@@ -91,7 +97,8 @@ def game_loop(screen, clock, config):
         update(dt, objects)
         update_camera(player)
         
-        screen.fill(BLACK)
+        # screen.fill(BLACK)
+        screen.blit(bg, (0,0))
         draw(screen, camera, objects)
 
         #debug mode
