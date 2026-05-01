@@ -27,3 +27,5 @@ BLUE_A = (0,0,255,120)
 #fonts
 large_font = pygame.font.SysFont("arial", 45)
 small_font = pygame.font.SysFont("arial", 10)
+score_font = pygame.font.SysFont("arial", 30)
+go_font = pygame.font.SysFont("arial", 60)
